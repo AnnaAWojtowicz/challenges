@@ -31,25 +31,20 @@ Constraints:
 Only one valid answer exists.
 """
 
-nums = [2,7,11,15] 
-target = 9
+nums = [3,2,4] 
+target = 6
 
 
 def find_two_sum(nums, target):
     length = len(nums) #this -1 gives you index num
-    index_len = length - 1
     output = []
-    output_index = []
     
-    for index, value in enumerate(nums):
-        output.append(value)
-        output_index.append(index)
-        total = sum(output)
-        if total == target:
-            print(output)
-            print(output_index)
-            break
-        else:
-            continue
+    for i in range(length):
+        for j in range(i+1, length):
+            if nums[i] + nums[j] == target:
+                output.append(nums[i])
+                output.append(nums[j])
+    print(output)
+        
 
 find_two_sum(nums, target)
