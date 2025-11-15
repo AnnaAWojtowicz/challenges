@@ -186,3 +186,40 @@ print(text.replace('p',''))
 
 # I like apples, but I love pizza!
 #I like ales, but I love izza more!
+
+
+
+#EX:
+#Locate the position of the alphabet in this mysterious, lengthy string. 
+# Utilize the str.find() method for this purpose, then extract the alphabet 
+# from the gibberish with string slicing.
+
+gibberish = 'absdqwjbasdbqwlabcdefghijklmnopqrstuvwxyz'
+ 
+# use str.find() to find the alphabet
+index = gibberish.find("abcdefghijklmnopqrstuvwxyz")
+# index = gibberish.find('abc') <- this is a smart approach!!!
+# use slicing str[:] to extract the alphabet
+alphabet = gibberish[index:]
+
+print(alphabet)
+ 
+
+
+#Here, the text is even messier. E has been replaced by &, and S has been replaced by *. 
+# Clean up the mess using str.replace().
+#Hint: You have to use str.replace() twice, 
+# but remember that the method does not change the original string 😉.
+
+gibberish = '&L&PHANT* &AG&RLY &AT &NORMOU* AMOUNT* OF D&LICIO&* WAT&RM&LON*'
+
+# use str.replace() to clean up string
+# note that we have to use it twice
+
+gibberish2 = gibberish.replace("&", "E")
+text = gibberish2.replace("*", "S")
+ 
+print(text)
+
+# note: another way would be to chain the methods:
+# text = gibberish.replace('&','E').replace('*','S')
