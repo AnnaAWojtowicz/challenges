@@ -103,3 +103,86 @@ print(text[-5:-1])
 
 #Worl   <- without "d" because :-1 is exclusive!!!
 
+
+
+
+# STRING METHODS
+
+#Another helpful string method is str.find(). <- only the first one!!!
+
+text = 'Hello World'
+print(text.find('o'))
+# 4 <- but not 4, 7
+
+
+# It is used to locate the position of a single character or a sequence of characters 
+# within a string.
+
+#Here, we use the str.find() method to locate the position of the word 'the':
+
+text = 'Without comments, the code becomes unreadable.'
+print(text.find('the'))
+
+#18
+
+#We get 18, which is the index number of the first character of the first 
+# (and only) occurrence of the word 'the' in our sentence.
+
+#Now, we can use the result to extract the last part of the sentence using string slicing:
+
+text = 'Without comments, the code becomes unreadable.'
+index = text.find('the')
+print(text[index:])
+
+#the code becomes unreadable.
+
+#Additionally, we have the str.replace() method, 
+# which is used to replace certain characters or a sequence of characters within a string.
+
+#Here, we use the str.replace() method to replace the word 'pizza' with 'burgers':
+text = 'I like apples, but I love pizza more!'
+print(text.replace('pizza','burgers'))
+
+#I like apples, but I love burgers more!
+
+#If there's more than one occurrence of the specified string, 
+# str.replace() will change all of them.
+
+#Here, we replace all occurrences of 'I' with 'you':
+
+text = 'I like apples, but I love pizza more!'
+# note that this method is case sensitive
+# only capital I is replaced
+print(text.replace('I','You'))
+
+#You like apples, but You love pizza more!
+
+#It's important to note that this method, like all string methods, creates a new adjusted copy of the original string, 
+# while the original string remains unchanged.
+
+#Here, you can see that the original string remains the same even after we apply str.replace():
+
+text = 'I like apples, but I love pizza more!'
+ 
+# print new adjusted copy of string
+print(text.replace('I','You'))
+# original string remains unchanged
+print(text)
+
+#You like apples, but You love burgers more!
+#I like apples, but I love pizza more!
+
+
+
+#Using str.replace(), you can also completely remove 
+# specific characters or sequences from a string:
+
+text = 'I like apples, but I love pizza more!'
+ 
+# remove ' more'
+print(text.replace(' more',''))
+# remove all 'p'
+print(text.replace('p',''))
+
+# I like apples, but I love pizza!
+#I like ales, but I love izza more!
