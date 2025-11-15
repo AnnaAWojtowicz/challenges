@@ -34,9 +34,30 @@ Only one valid answer exists.
 nums = [3,2,4] 
 target = 6
 
-
 def find_two_sum(nums, target):
-    length = len(nums) #this -1 gives you index num
+    length = len(nums)
+    output = []
+    for i in range(length):
+        for j in range(i+1, length):
+            if nums[i] + nums[j] == target:
+                output.append(nums[i])
+                output.append(nums[j])
+    print(output)
+
+find_two_sum(nums, target)
+
+
+
+
+
+
+
+
+
+
+"""
+def find_two_sum(nums, target):
+    length = len(nums)
     output = []
     
     for i in range(length):
@@ -45,6 +66,7 @@ def find_two_sum(nums, target):
                 output.append(nums[i])
                 output.append(nums[j])
     print(output)
-        
+    
 
 find_two_sum(nums, target)
+"""
