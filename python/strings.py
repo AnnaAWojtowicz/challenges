@@ -223,3 +223,4 @@ print(text)
 
 # note: another way would be to chain the methods:
 # text = gibberish.replace('&','E').replace('*','S')
+
