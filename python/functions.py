@@ -1,3 +1,5 @@
+# FUNCTIONS
+
 # In Python, you define a function using the def keyword, 
 # followed by the function name, parentheses, and a colon. 
 # The function body is then indented below.
@@ -20,5 +22,35 @@ def log_message():
  
 num = 1
 log_message()       # 1
+
+
+# Another important aspect of functions is their ability to return values. 
+# You can achieve this by using the return keyword.
+# The value specified after the return keyword is passed back to 
+# the caller of the function and can then be used for further operations:
+
+def func():
+   return 5
+ 
+result = func()
+print(result)       #5
+
+# Note that if a return statement is encountered, the function immediately exits.
+# Here, the print() function that follows the return statement is not executed:
+
+def func():
+  return 5
+  print('I am not printed!')
+ 
+print(func())       # 5
+
+# You can use this approach to exit a function early if a certain condition is met. For example:
+
+def func():
+  if True:
+    return 2
+  return 5
+ 
+print(func())   # 2
 
 
