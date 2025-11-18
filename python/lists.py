@@ -62,6 +62,8 @@ print('orange' in fruits)   # False
 
 
 
+
+
 # MODYFING LISTS
 
 # Let's say you're planning a trip to the grocery store, and you create a list of items you need to buy:
@@ -180,6 +182,52 @@ shopping_list[2:4] = []
 print(shopping_list)    # ['bread', 'bananas', 'cheese']
 
 
+
+
+# EXTRA EXAMPLES: 
+
+guest_list = ['Alice', 'Bob', 'Erik', 'Charlie']
+ 
+guest_list[1:3] = ['Karl']
+ 
+print(guest_list)
+# output: ['Alice', 'Karl', 'Charlie']
+
+
+todo_list = ['Wake up', 'Eat breakfast',  'Study Python']
+task = 'Go for a run'
+ 
+todo_list.insert(1, task)
+ 
+print(todo_list)
+ 
+# output: ['Wake up', 'Go for a run', 'Eat breakfast',  'Study Python']
+
+
+# define function here...
+
+def get_index(some_list, some_value):
+	return some_list.index(some_value)
+ 
+print(get_index([1,2,3],3))          # expected: 2
+print(get_index([0,9,19],9))         # expected: 1
+print(get_index(['x','y','z'],'z'))  # expected: 2
+ 
+ 
+def remove_if(elements):
+    # enter code here...
+    if elements[-1] < 4:
+	    elements.pop()
+    return elements
+ 
+print(remove_if([1,2,3]))   # expected: [1,2]
+print(remove_if([0,9,19]))  # expected: [0,9,19]
+print(remove_if([3,3,-3]))	# expected: [3,3]
+ 
+
+
+
+# TUPLES
 
 
 
