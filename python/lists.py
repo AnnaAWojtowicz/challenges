@@ -227,7 +227,7 @@ print(remove_if([3,3,-3]))	# expected: [3,3]
 
 
 
-# TUPLES
+
 
 
 
