@@ -292,4 +292,64 @@ for x in range(3):
 #Break inner
 
 # Once the inner loop is terminated by the break statement, the outer loop continues and creates a new inner loop in the next iteration.
-# 
+
+
+
+# WHILE LOOPS
+# Consider the following list of tasks
+tasks = ['Task 1', 'Task 2', 'Task 3', 'Task 4', 'Task 5']
+
+# Imagine we want to perform each task until the list is empty.
+# This means we need to remove an item from the list each time we perform a task.
+# Theoretically, we could do this using a for-loop. Intuitively, you might write the following:
+
+tasks = ['Task 1', 'Task 2', 'Task 3', 'Task 4', 'Task 5']
+for task in tasks:
+  print('Performing task: ', task)
+  # remove task from tasks
+  tasks.remove(task)
+
+# But, using a for-loop in this scenario is not a good idea. The code won't work as expected.
+# You should never modify the sequence you are iterating over within a for-loop. This will have unexpected results.
+# Instead, you can use a while loop.
+# While loops in Python are used to repeatedly execute a block of code as long as a specified condition is true.
+# The syntax of a while loop is as follows:
+# while condition:
+  # Code block to be executed
+
+# Here's a simple example:
+
+x = 0
+while x < 5:
+  print(x)
+  x += 1
+
+# 0
+# 1
+# 2
+# 3
+# 4
+
+# As long as x is less than 5, we print x and add 1.
+# This continues for five iterations until x reaches 5, and then the loop terminates.
+# Let's return to our example with the list of tasks.
+# Here's how you would do it using a while loop:
+tasks = ['Task 1', 'Task 2', 'Task 3', 'Task 4', 'Task 5']
+while len(tasks) > 0:
+  # remaining tasks:
+  print(tasks)
+  # remove task from tasks
+  current_task = tasks.pop(0)
+  # perform current task
+  print(current_task)
+
+# ['Task 1', 'Task 2', 'Task 3', 'Task 4', 'Task 5']
+# Task 1
+# ['Task 2', 'Task 3', 'Task 4', 'Task 5']
+# Task 2
+# ['Task 3', 'Task 4', 'Task 5']
+# Task 3
+# ['Task 4', 'Task 5']
+# Task 4
+# ['Task 5']
+# Task 5
