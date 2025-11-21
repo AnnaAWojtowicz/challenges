@@ -353,3 +353,34 @@ while len(tasks) > 0:
 # Task 4
 # ['Task 5']
 # Task 5
+
+# As long as tasks has at least one element, the loop continues to run, removing the first task of the list in each iteration.
+# When working with while loops, you need to be careful not to accidently create an infinite loop.
+# Here we have such an infinite loop. Can you see why?
+
+# while 2 > 1:
+#  print(True)
+
+# The loop will continue running indefinitely because the condition 2 > 1 is always true.
+
+# You can use both break and continue in a while loop:
+
+num = 0
+while num < 10:
+  num += 1
+  if num == 5:
+    print('Breaking loop')
+    break
+  if num % 2 == 0:
+    print('Skipping even number')
+    continue
+  print(num)
+
+# 1
+# Skipping even number
+# 3
+# Skipping even number
+# Breaking loop
+
+
+
