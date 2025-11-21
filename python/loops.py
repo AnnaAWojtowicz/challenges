@@ -382,5 +382,62 @@ while num < 10:
 # Skipping even number
 # Breaking loop
 
+# EXTRAS:
+
+text = ''
+while len(text) < 4:
+  print(len(text))
+  text += 'X'
+  print(text)
 
 
+for i in range(4):
+  break
+  print(i)
+
+
+for i in range(-2,3):
+  if i < 0:
+    continue
+  print(i)
+
+
+sum = 0
+for i in range(1,7):
+  # check if i is uneven
+  if i % 2 != 0:
+    continue
+  sum += i
+print(sum)
+
+
+text = ''
+while len(text) < 4:
+  text += 'X'
+  print(text)
+
+
+num = 1
+while num > 0:
+  num += 1
+  print(num)
+  if num > 3:
+    break
+
+
+l = ['a', 'b', 'abc']
+for i in l:
+  print(i)
+
+
+text = ''
+while len(text) < 4:
+  text += 'X'
+print(text)
+
+
+for x in range(3):
+  sum = 0
+  for y in range(3):
+    sum += y
+  print(sum)
