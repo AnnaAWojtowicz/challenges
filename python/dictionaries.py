@@ -69,6 +69,67 @@ inventory = {
   'orange': 20
 }
 
-
-
+# However, when you simply need to store a collection of data without associating each element with a unique key, you should use a list or a tuple.
+# Some examples:
+scores = [85, 90, 75, 85, 80]
  
+daily_steps = (8420, 11280, 4528, 16090)
+
+# Dictionaries, unlike lists and tuples, are not ordered.
+# This means you cannot use an index to access a value.
+
+person = { 'age': 12, 'name': 'John' }
+ 
+# print(person[0]) # KeyError: 0
+
+# Python throws the error: KeyError: 0 if we try to access a value at index 0.
+# This is because Python tried to find the key 0 in our dictionary, but couldn't find it.
+# Yes, integers are valid keys in dictionaries. Like in this example:
+
+my_dict = {
+  'str': 10,
+  # integer as key
+  10: 'str'
+}
+ 
+print(my_dict[10])  # str
+
+# The 10 in my_dict[10] has nothing to do with index 10. Instead, it refers to the key 10.
+# You can use any immutable data type as key in dictionaries. For instance:
+
+my_dict = {
+  # string as key
+  'str': 10,
+  # integer as key
+  10: 11,
+  # tuple as key
+  (5,10): 99
+}
+ 
+print(my_dict['str'])   # 10
+print(my_dict[10])      # 11
+print(my_dict[(5,10)])  # 99
+
+ # However, keys have to be unique. They can not be used more than once in the same dictionary.
+ # Let's see what happens if we don't follow this rule:
+
+my_dict = {
+  'key': 10,
+  # use key again
+  'key': 99
+}
+ 
+print(my_dict)  # {'key': 99}
+
+# As you can see, Python simply overwrites the first value.
+# Values, on the other hand, don't have to be unique:
+
+my_dict = {
+  'a': 10,
+  # use same value again
+  'b': 10
+}
+ 
+print(my_dict) # {'a': 10, 'b': 10}
+
+
