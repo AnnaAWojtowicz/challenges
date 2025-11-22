@@ -133,3 +133,35 @@ my_dict = {
 print(my_dict) # {'a': 10, 'b': 10}
 
 
+# EXAMPLES:
+
+key = 'name'
+value = 'Carolina'
+ 
+person = {
+  key: value,
+  'age': 30
+}
+ 
+print(person['name'])
+# output: Carolina
+
+
+
+
+# Exercise: Create dictionary with function
+# Define a function called create_dict that returns a dictionary based on two given parameters. Ensure the function returns the expected results.
+
+def create_dict(key, value):
+  return { key: value }
+ 
+print(create_dict('name', 'Bob'))
+# output: { 'name': 'Bob' }
+ 
+print(create_dict(10, 99))
+# output: { 10: 99 }
+
+
+
+# Dictionary length, keyword in, and nested dictionaries
+
