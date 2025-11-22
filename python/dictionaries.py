@@ -163,5 +163,118 @@ print(create_dict(10, 99))
 
 
 
-# Dictionary length, keyword in, and nested dictionaries
+# Dictionary length, keyword in, and nested dictionaries:
+
+# Let's create a new dictionary with some English-Portuguese translations:
+translations = {
+  'hello': 'olá',
+  'please': 'por favor',
+  'thank you': 'obrigado',
+  'good morning': 'bom dia'
+}
+
+# We can use the English word as a key to find its translation:
+
+translations = {
+  'hello': 'olá',
+  'please': 'por favor',
+  'thank you': 'obrigado',
+  'good morning': 'bom dia'
+}
+# get translation of 'good morning'
+print(translations['good morning'])     # bom dia
+
+
+# Just like with strings, tuples, and lists, you can apply len() function to dictionaries.
+# len() will return the number of key-value pairs:
+
+translations = {
+  'hello': 'olá',
+  'please': 'por favor',
+  'thank you': 'obrigado',
+  'good morning': 'bom dia'
+}
+# get number of key-value pairs
+print(len(translations))        # 4
+
+
+# To check if a dictionary contains a specific key, use the in keyword.
+# Let's check if we have a translation for 'hi' and add it if necessary:
+
+translations = {
+  'hello': 'olá',
+  'please': 'por favor',
+  'thank you': 'obrigado',
+  'good morning': 'bom dia'
+}
+# is key 'hi' in translations?
+print('hi' in translations)     # False
+# add new key-value pair
+translations['hi'] = 'Oi'
+# check again
+print('hi' in translations)     # True
+
+
+# Sometimes you need to store more complex hierarchical data structures that cannot be represented by a single dictionary.
+# That's when we create dictionaries that contain other, nested dictionaries as their values.
+# Here's an example of such nested dictionaries:
+
+student = {
+  'name': 'John',
+  'age': 16,
+  'grades': {
+    'math': 90,
+    'science': 85,
+    'history': 88
+  }
+}
+
+# To access a value within the inner dictionary, we need to use multiple keys:
+
+student = {
+  'name': 'John',
+  'age': 16,
+  'grades': {
+    'math': 90,
+    'science': 85,
+    'history': 88
+  }
+}
+ 
+print(student['grades']['history'])     # 88
+
+
+my_dict = {
+  'a': 1,
+  'b': {
+    'x': 90,
+    'y': 80
+  }
+}
+ 
+print('x' in my_dict)   # False (because it's nested!)
+
+# but you can do it like this: 
+
+my_dict = {
+  'a': 1,
+  'b': {
+    'x': 90,
+    'y': 80
+  }
+}
+ 
+print('x' in my_dict['b'])      # True
+
+
+my_dict = {
+  'a': 1,
+  'b': {
+    'x': 90,
+    'y': 80
+  }
+}
+ 
+print(len(my_dict['b']))    # 2 (checking len only of nested dict)
+
 
