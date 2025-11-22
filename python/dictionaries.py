@@ -318,5 +318,128 @@ does_key_exist('zipcode')
 
 # Modifying Python Dictionaries:
 
+# Let's create a new dictionary for a guy named Bob.
+person = {
+  'name': 'Bob',
+  'age': 30
+}
+
+# Now assume we learned that Bob is a data scientist and want to add this information to our dictionary.
+# New key-value pairs can be added to a dictionary through direct assignment, like so:
+# dict[key] = value
+
+# Let's update our dictionary with the new information about Bob:
+
+person = {
+  'name': 'Bob',
+  'age': 30
+}
+ 
+person['job'] = 'data scientist'
+ 
+print(person.get('job'))    # data scientist
+
+
+# Another way to add new information to an existing dictionary is by using the dict.update() method:
+
+person = {
+  'name': 'Bob',
+  'age': 30
+}
+ 
+person.update({'job': 'data scientist'})
+ 
+print(person.get('job'))        # data scientist
+
+# Keep in mind that you should pass a separate dictionary as an argument to the dict.update() method.
+# With dict.update(), you can also add multiple key-value pairs at once:
+
+person = {
+  'name': 'Bob',
+  'age': 30
+}
+ 
+person.update({'job': 'data scientist', 'gender': 'male'})
+ 
+print(person.get('job'))        # data scientist
+print(person.get('gender'))     # male
+
+# We have added Bob's gender and his job at the same time.
+
+# EXTRA EXAMPLES:
+
+my_dict = { 'a': 1, 'b': 2 }
+ 
+my_dict[3] = 'c'
+ 
+print(my_dict[3])
+my_dict = { 'a': 1, 'b': 2 }
+ 
+my_dict[3] = 'c'
+ 
+print(my_dict[3])   # c
+
+
+# Back to Bob.
+person = {
+  'name': 'Bob',
+  'age': 30
+}
+
+# Let's assume that Bob just turned 31, and we need to update his age in our dictionary.
+# We can update a key-value pair in the same way as we add a new one, through direct assignment:
+
+person = {
+  'name': 'Bob',
+  'age': 30
+}
+ 
+person['age'] = 31
+ 
+print(person.get('age'))    # 31
+
+
+# dict.update() can also update a key-value pair:
+
+person = {
+  'name': 'Bob',
+  'age': 30
+}
+ 
+person.update({'age': 31})
+ 
+print(person.get('age'))    # 31
+
+
+# That's because the dictionary that you pass as argument to dict.update() takes precedence over the existing one.
+
+
+# Now we just need to learn how to delete existing key-value pairs.
+# Key-value pairs can be deleted using the del keyword:
+
+person = {
+  'name': 'Bob',
+  'age': 31
+}
+ 
+# Remove the key-value pair with key 'age'
+del person['age']
+ 
+print(person)   # { 'name': 'Bob' }
+
+# You can also use the pop() method, which we already know from its usage with strings and lists.
+# dict.pop(key) removes the key-value pair associated with the specified key and returns the value:
+
+person = {
+  'name': 'Bob',
+  'age': 31
+}
+ 
+# Remove and return the value of 'age'
+age = person.pop('age')
+ 
+print(person)   # {'name': 'Bob'}
+print(age)      # 31
+
 
 
