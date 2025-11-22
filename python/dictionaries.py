@@ -278,3 +278,45 @@ my_dict = {
 print(len(my_dict['b']))    # 2 (checking len only of nested dict)
 
 
+# EXERCISES:
+
+# Which city does Bob live in? Get the value from the nested dictionary and assign it to the variable city.
+
+person = {
+  'name': 'Bob',
+  'age': 30,
+  'address': {
+    'city': 'New York',
+    'zipcode': '10001'
+  }
+}
+ 
+# access nested dictionary value here...
+city = person["address"]["city"]
+
+print(city)
+# expected: New York
+
+# Complete the function does_key_exist to print whether the person dictionary contains keys passed to the function as arguments.
+
+person = {
+  'name': 'Bob',
+  'age': 30,
+  'city': 'New York'
+}
+ 
+def does_key_exist(key):
+  # add check here:
+  if key in person:
+    print(key, 'exists')
+  else:
+    print(key, 'does not exist')
+ 
+does_key_exist('age')
+does_key_exist('zipcode')
+
+
+# Modifying Python Dictionaries:
+
+
+
