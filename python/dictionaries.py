@@ -442,4 +442,13 @@ print(person)   # {'name': 'Bob'}
 print(age)      # 31
 
 
+# Let's create a new dictionary that we can work with:
+capitals = {
+  'USA': 'Washington D.C.',
+  'France': 'Paris',
+  'Brazil': 'Brasília',
+  'Peru': 'Lima'
+}
+
+# Sometimes, you'll need to extract the keys from a dictionary.
 
