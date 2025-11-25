@@ -451,4 +451,52 @@ capitals = {
 }
 
 # Sometimes, you'll need to extract the keys from a dictionary.
+#You can do so using the dict.keys() method.
+
+capitals = {
+  'USA': 'Washington D.C.',
+  'France': 'Paris',
+  'Brazil': 'Brasília',
+  'Peru': 'Lima'
+}
+ 
+keys = capitals.keys()
+ 
+print(keys)   # dict_keys(['USA', 'France', 'Brazil', 'Peru'])
+
+# The dict.keys() method returns a so-called view object.
+# This view object provides a dynamic view of the dictionary's keys.
+# It's dynamic because it reflects changes made to the dictionary in real-time.
+# Here we add a new key after creating the view object.
+
+capitals = {
+  'USA': 'Washington D.C.',
+  'France': 'Paris',
+  'Brazil': 'Brasília',
+  'Peru': 'Lima'
+}
+ 
+keys = capitals.keys()
+ 
+print(keys)   # dict_keys(['USA', 'France', 'Brazil', 'Peru'])
+ 
+# add new key-value pair
+capitals['Germany'] = 'Berlin'
+ 
+print(keys)   # dict_keys(['USA', 'France', 'Brazil', 'Peru', 'Germany'])
+
+# Notice that the new key has been added to the view object.
+
+# You can transform the view object into a static list using the list() function:
+capitals = {
+  'USA': 'Washington D.C.',
+  'France': 'Paris',
+  'Brazil': 'Brasília',
+  'Peru': 'Lima'
+}
+ 
+keys = capitals.keys()
+ 
+# transform view object into list
+print(list(keys))   # ['USA', 'France', 'Brazil', 'Peru']
 
