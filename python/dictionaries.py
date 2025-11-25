@@ -641,10 +641,144 @@ print(check_for_value(80)) # expected: False
  
 
 
+# Iterate over the key-value pairs of the capitals dictionary and assign swapped key-value pairs to swapped_dict.
+capitals = {
+  'USA': 'Washington D.C.',
+  'France': 'Paris',
+  'Brazil': 'Brasília',
+  'Peru': 'Lima'
+}
+swapped_dict = {}
+ 
+for key, value in capitals.items():
+    # assign swapped key-value pair to swapped_dict
+    swapped_dict[value] = key
+ 
+print(swapped_dict)
+# expected output:
+# {
+#   'Washington D.C.': 'USA',
+#   'Paris': 'France',
+#   'Brasília': 'Brazil',
+#   'Lima': 'Peru'
+# }
+ 
+
+# Filter the customers dictionary to extract the highest spending customers.
+# Loop through the key-value pairs of the customers dictionary. If a customer spent more than 500, add them to the top_customers dictionary.
+
+customers = {
+  'A': 450,
+  'B': 550,
+  'C': 600,
+  'D': 300,
+  'E': 700
+}
+ 
+top_customers = {}
+ 
+# iterate over customers here...
+for key, values in customers.items():
+	if customers[key] > 500:
+		top_customers[key] = values
+ 
+print(top_customers)
+ 
+# expected output:
+# {'B': 550, 'C': 600, 'E': 700 }
 
 
 
 
+# TEST
+
+my_dict = { 'a': 1, 'b': 2 }
+my_dict.update({'b': 3, 'c': 2})
+print(my_dict)
+
+"""
+my_dict = { 'a': 1, 'b': 2 }
+del my_dict['b']
+print(my_dict['b'])
+"""
+
+my_dict = { 'a': 1, 'b': 2 }
+my_dict['b'] = 3
+print(my_dict['b'])
 
 
 
+my_dict = { 'a': 1, 'b': 2 } 
+my_dict[3] = 'c'
+print(my_dict[3])
+
+
+
+employee = {
+  'id': 12345,
+  'name': 'Bob',
+  'department': 'IT',
+  'salary': 70000
+}
+print(employee.get('id'))   # 12345
+
+
+
+my_dict = {
+  'a': 1,
+  'b': {
+    'x': 90,
+    'y': 80
+  }
+}
+print(len(my_dict['b']))    # 2
+
+
+
+my_dict = { 'a': 1, 0: 2, 'a': 2 }
+print(my_dict['a'])   # 2
+
+
+
+my_dict = {
+  'a': 1,
+  'b': {
+    'x': 90,
+    'y': 80
+  }
+}
+print('x' in my_dict['b'])  # True
+
+
+
+my_dict = { 'a': (1,2,3), 'b': 2 }
+print(2 in my_dict)   # False
+
+
+my_dict = { 'a': (1,2,3), 'b': 2 }
+print('a' in my_dict)   # True
+
+
+employee = {
+  'id': 12345,
+  'name': 'Bob',
+  'department': 'IT',
+  'salary': 70000
+}
+print(employee['name'])   # Bob
+
+
+
+my_dict = { 'a': 1, 'b': 2 }
+my_dict.update({'c': 2})
+print(my_dict['c'])     # 2
+
+
+"""
+my_dict = { 'a': 1, 'b': 2 }
+print(my_dict[0])   # KeyError: 0
+"""
+
+
+my_dict = { 'a': 1, 0: (1,2), (1,2): 2 }
+print(my_dict.get((1,2)))   # 2
