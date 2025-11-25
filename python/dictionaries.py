@@ -487,6 +487,7 @@ print(keys)   # dict_keys(['USA', 'France', 'Brazil', 'Peru', 'Germany'])
 
 # Notice that the new key has been added to the view object.
 
+
 # You can transform the view object into a static list using the list() function:
 capitals = {
   'USA': 'Washington D.C.',
@@ -499,4 +500,123 @@ keys = capitals.keys()
  
 # transform view object into list
 print(list(keys))   # ['USA', 'France', 'Brazil', 'Peru']
+
+
+
+# If you want to extract a dictionary's values instead of its keys, you can use the dict.values() method:
+capitals = {
+  'USA': 'Washington D.C.',
+  'France': 'Paris',
+  'Brazil': 'Brasília',
+  'Peru': 'Lima'
+}
+ 
+values = capitals.values()
+ 
+print(values)   # dict_values(['Washington D.C.', 'Paris', 'Brasília', 'Lima'])
+
+
+
+
+# Another view object method is dict.items(), which returns a dynamic view of all key-value pairs in a dictionary:
+capitals = {
+  'USA': 'Washington D.C.',
+  'France': 'Paris',
+  'Brazil': 'Brasília',
+  'Peru': 'Lima'
+}
+ 
+items = capitals.items()
+ 
+print(items)  # dict_items([('USA', 'Washington D.C.'), ('France', 'Paris'), ('Brazil', 'Brasília'), ('Peru', 'Lima')])
+
+
+# Sometimes it's necessary to iterate over keys, values or key-value pairs in dictionaries.
+# We can accomplish this using a for-loop and the view objects introduced earlier.
+# Here, we iterate over the values of our dictionary:
+
+capitals = {
+  'USA': 'Washington D.C.',
+  'France': 'Paris',
+  'Brazil': 'Brasília',
+  'Peru': 'Lima'
+}
+ 
+# loop over values
+for value in capitals.values():
+  print(value)
+
+  # Washington D.C.
+  # Paris
+  # Brasília
+  # Lima
+
+
+# We don't need to use a view object to iterate over the keys of our dictionary:
+capitals = {
+  'USA': 'Washington D.C.',
+  'France': 'Paris',
+  'Brazil': 'Brasília',
+  'Peru': 'Lima'
+}
+ 
+# loop over keys
+for key in capitals:
+  print(key)
+
+  # USA
+  # France
+  # Brazil
+  # Peru
+
+
+# With dict.items() we can iterate over keys and values simultaneously:
+capitals = {
+  'USA': 'Washington D.C.',
+  'France': 'Paris',
+  'Brazil': 'Brasília',
+  'Peru': 'Lima'
+}
+ 
+# loop over key-value pairs
+for key, value in capitals.items():
+  print('The capital of', key, 'is', value)
+
+  # The capital of USA is Washington D.C.
+  # The capital of France is Paris
+  # The capital of Brazil is Brasília
+  # The capital of Peru is Lima
+
+
+
+  # EXTRA EXAMPLES: 
+
+  # Loop through the keys of the capitals dictionary and calculate their total number of characters. Increment the variable num_char by the length of each key in every iteration.
+
+capitals = {
+  'USA': 'Washington D.C.',
+  'France': 'Paris',
+  'Brazil': 'Brasília',
+  'Peru': 'Lima'
+}
+ 
+num_char = 0
+ 
+# iterate over keys here...
+for key in capitals:
+	num_char += len(key)
+ 
+print(num_char)
+# expected: 19
+ 
+ 
+ 
+
+
+
+
+
+
+
+
 
