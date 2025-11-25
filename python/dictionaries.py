@@ -610,6 +610,34 @@ print(num_char)
 # expected: 19
  
  
+
+
+# Define a function called check_for_value that takes a value as argument and checks if that value exists in the my_dict dictionary. Return the appropriate Boolean.
+my_dict = {
+  'a': 10,
+  'b': 11,
+  'c': 77,
+  'd': 24,
+  'e': 13
+}
+ 
+# write function here...
+def check_for_value(some_value):
+    for value in my_dict.values():
+        if value == some_value:
+            return True
+    return False
+
+# or like this:
+def check_for_value(value):
+    return value in my_dict.values()
+
+
+print(check_for_value(3)) # expected: False
+print(check_for_value(10)) # expected: True
+print(check_for_value(24)) # expected: True
+print(check_for_value(80)) # expected: False
+ 
  
 
 
