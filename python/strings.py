@@ -22,7 +22,7 @@ c = 'fun'
 text = ' '.join([a,b,c])
 print(text)
 
-#ode for fun
+#code for fun
 
 #We can also specify a different separator:
 
