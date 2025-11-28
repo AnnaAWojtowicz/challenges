@@ -243,3 +243,27 @@ print(text.replace('l',''))
 # if you do this like that: 
 # text.replace('l','')
 # print(text) <- the original text will be printed, so you have to assign to a var
+
+
+
+
+def minutes_between(earlier, later):
+    e_h_list = []
+    e_h_list.append(earlier[0:2])
+
+    e_h_m_list = []
+    e_h_m_list.append(earlier[-2:])
+    e_h_m = int(e_h_list[0]) * 60 + int(e_h_m_list[0])
+    
+    l_h_list = []
+    l_h_list.append(later[0:2])
+
+    l_h_m_list = []
+    l_h_m_list.append(later[-2:])
+    l_h_m = int(l_h_list[0]) * 60 + int(l_h_m_list[0])
+
+    total = l_h_m - e_h_m
+    print(total)
+
+print(minutes_between('10:15', '11:16')) # expected output: 61
+print(minutes_between('08:00', '19:47')) # expected output: 707
