@@ -260,9 +260,146 @@ print(message)
 # expected: 'Product: Laptop, Price: 999, Quantity: 3, Total: 2997'
 
 
-# 
-# # 
-#
 
-#
-#
+
+# Formatting numeric values with f-strings
+# Consider the following example:
+result = 10000 / 3
+print(result)       # 3333.3333333333335
+
+# The printed value is very difficult to read.
+# It would be much better if we could specify, for example, how many decimal places we want to display.
+# Luckily, you can use f-strings to format numerical values.
+# Let's first use an f-string to display the result value:
+result = 10000 / 3
+print(f'{result}')      # 3333.3333333333335
+
+# So far, nothing changed.
+# Here's how you can format the result variable to display only two decimal places:
+result = 10000 / 3
+print(f'{result:.2f}')      # 3333.33
+
+# This is much easier to read. But what exactly happens here?
+# What's new is the colon : followed by .2f.
+# .2f is a so called format specifier.
+# It reads as: "format the input value as a floating-point number with two decimal places".
+# The format specifier can vary. Whenever you add a format specifier, you need to add a colon : between the embedded value and the specifier.
+# We can also add a thousand separator by adding a comma after the colon:
+result = 10000 / 3
+print(f'{result:,.2f}')     # 3,333.33
+
+# Instead of 2 decimal places, we could display 4 decimal places:
+result = 10000 / 3
+print(f'{result:,.4f}')     # 3,333.3333
+
+# Another formatting option is to specify a minimum width for the embedded value.
+# This ensures that the value occupies at least the specified number of characters, which can help in aligning and organizing your output neatly.
+# Here, we specify that the embedded value should have a width of at least 20 characters.
+result = 10 / 5
+print(f'START{result:20}END')       # START                 5.0END
+# As you can see, any space not occupied by the embedded value is filled with whitespace, and the value is right-aligned.
+# You can also specify the alignment with > (right-aligned), < (left-aligned), and ^ (centered):
+result = 10 / 5
+# left-aligned
+print(f'{result:<20}')
+# right-aligned (default)
+print(f'{result:>20}')
+# centered
+print(f'{result:^20}')
+result = 10 / 5
+#                  2.0
+# 2.0                 
+#        2.0 
+# There are many more formatting options that we cannot all cover in this tutorial. You can read more about them here in the official Python documentation. (https://docs.python.org/3/library/string.html#grammar-token-format-spec-width)
+
+
+# extra examples:
+
+result = 10 / 3
+print('{result:.2f}')       # {result:2.f}
+
+result = 10 / 3
+print(f'{result:.2f}')      # 3.33
+
+print(f'{10000/3:,.3f}')    # 3,333.333
+
+
+
+#  EXERCISES:
+
+# Transform the message string into an f-string and embed the correct exchange value. Format the result to 2 decimal places using format specifiers in the f-string.
+exchange_rate = 0.843216  # Euro to USD exchange rate
+euros = 580 
+# Complete the following line...
+message = f'At the current exchange rate, €{euros} is worth ${(euros * exchange_rate):.2f}.'
+ 
+print(message)
+# expected: 'At the current exchange rate, €580 is worth $489.07.'
+
+
+# In this exercise, you will create a neatly formatted table using f-strings. Adjust the formatting of each table row to ensure that each cell has a minimum width of 10 characters, right-aligns the values, and displays the total values with 2 decimal places.
+products = [
+    {'name': 'A', 'quantity': 4, 'unit_price': 19.99},
+    {'name': 'B', 'quantity': 2, 'unit_price': 29.9},
+    {'name': 'C', 'quantity': 20, 'unit_price': 57.14},
+    {'name': 'D', 'quantity': 3, 'unit_price': 13}
+]
+ 
+print(f'{'Product':>10}{'Quantity':>10}{'Total':>10}')
+print('-----------------------------------')
+ 
+for product in products:
+  total = product['quantity'] * product['unit_price']
+  print(f"{product['name']:>10}{product['quantity']:>10}{total:>10.2f}")
+ 
+# output:
+#    Product  Quantity     Total
+# -----------------------------------
+#          A         4     79.96
+#          B         2     59.80
+#          C        20   1142.80
+#          D         3     39.00
+
+
+# TEST: 
+
+text = 'brilliant'
+print(text.split('i', 1))   # ['br', 'lliant']
+
+print(f'3 times 3 is {3 * 3}')      # 3 times 3 is 9
+
+text = 'a-b-c-d'
+print(text.split('-'))      # ['a', 'b', 'c', 'd']
+
+print("She said, \"Hello!\"")       # She said, "Hello!"
+
+result = 10 / 3
+print('{result:.2f}')       # {result:.2f}
+
+text = 'a b c d'
+print(text.split('b'))      # ['a ', ' c d']
+
+text = 'abcd'
+print(text.split('e'))      # ['abcd']
+
+# print('Hi there. How's it going?')    # SyntaxError: unterminated string literal (detected at line 1)
+
+print('3 times 3 is {3 * 3}')       # 3 times 3 is {3 * 3}
+
+print('Line 1\\nLine 2')    # Line 1\nLine 2
+
+print(f'{10000/3:,.3f}')    # 3,333.333
+
+text = 'ab cd'
+print(text.split())     # ['ab', 'cd']
+
+result = 10 / 3
+print(f'{result:.2f}')      # 3.33
+
+text = 'brilliant'
+print(text.split('l'))      # ['bri', '', 'iant']
+
+print('Line 1\nLine 2')
+# Line 1
+# Line 2
+
