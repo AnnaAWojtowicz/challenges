@@ -236,8 +236,30 @@ print(f'3 times 3 is {3 * 3}')      # 3 times 3 is 9
 
 # EXERCISES:
 
-# 
-# 
+# Transform the message string into an f-string. Include the variables name and age in the message string.
+name = 'Alice'
+age = 30
+  
+# complete code here...
+message = f'Hello, my name is {name} and I am {age} years old.'
+ 
+print(message)
+# expected: 'Hello, my name is Alice and I am 30 years old.'
+
+
+
+# Transform the message string into an f-string and embed the necessary variables and Python expressions.
+product = 'Laptop'
+price = 999
+quantity = 3
+ 
+# Complete the following line...
+message = f'Product: {product}, Price: {price}, Quantity: {quantity}, Total: {price * quantity}'
+ 
+print(message)
+# expected: 'Product: Laptop, Price: 999, Quantity: 3, Total: 2997'
+
+
 # 
 # # 
 #
