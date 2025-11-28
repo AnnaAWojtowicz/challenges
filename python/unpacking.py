@@ -226,9 +226,23 @@ print(b)        # 4
 print(a)        # [1, 2, 3]
 
 
+# EXERCISES:
 
-# 
-# 
-# 
-#  
-#  #
+#  The following unpacking expression contains a mistake: the * operator is in the wrong position. Move the * operator so that the expression b + c == 90 evaluates to True.
+data = [10, 20, 30, 40, 50]
+*_, b, c = data
+print(b + c == 90) # expected: True
+
+
+# Complete the function below. It should remove any middle names (if present) and return only the first and last names. Hint: Use unpacking with the * operator. You'll also need to split the name string into individual substrings.
+def get_names(full_name):
+   person = full_name.split()
+   first_name, *_, last_name = person
+   return first_name, last_name
+ 
+print(get_names('John Smith'))
+# expected: ('John', 'Smith')
+print(get_names('Emily Catherine Brown'))
+# expected: ('Emily', 'Brown')
+print(get_names('Michael Andrew Thomas Lee'))
+# expected: ('Michael', 'Lee')
