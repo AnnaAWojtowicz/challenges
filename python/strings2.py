@@ -99,9 +99,147 @@ text = 'a b c d'
 print(text.split('b'))      # ['a ',' c d']
 
 
+# Another characteristic of str.split() is that if you specify a separator that doesn't exist in the original string, the result will be a list containing the entire string as a single element.
+# For example, here we try to split a string using the non-existing character Z:
+text = 'programming'
+print(text.split('Z'))      # ['programming']
+
+# However, let's see what happens when we split the text at the letter m, which appears twice in a row:
+text = 'programming'
+print(text.split('m'))      # ['progra', '', 'ing']
+
+# Since the function splits the original string at each occurence of the separator, we get three substrings. Because there's nothing between the two ms, one of the substrings is an empty string.
+
+# extra examples:
+
+text = 'abcd'
+print(text.split('e'))      # ['abcd']
+
+text = 'brilliant'
+print(text.split('l'))      # ['bri', '', 'iant']
+
+
+# Last but not least, str.split() has a second optional parameter called maxsplit:
+# str.plit(separator, maxsplit)
+# You can use it to determine the maximum number of split.
+# By default, there's no limit, so the string splits at every occurrence of the separator.
+# For example, here we limit the number of splits to 2, even though the separator - appears more than twice:
+text = '1-2-3-4'
+print(text.split('-', 2))       # ['1', '2', '3-4']
+
+# extra examples:
+
+text = 'brilliant'
+print(text.split('i', 1))       # ['br', 'lliant']
+
+
+# EXERCISES:
+
+# Split the text variable using the appropriate separator to get a list containing four numbers.
+text = 'one?two?three?four'
+# complete the following line...
+words = text.split("?")
+print(words)
+# expected: ['one', 'two', 'three', 'four']
+
+
+# Extract the domain (example.com) from the email below. Use str.split() to divide the email at the appropriate position, and then use string indexing to select the domain part.
+email = 'john@example.com' 
+# complete the following line...
+domain = email.split("@")
+domain = domain[1]
+# or: domain = email.split("@")[1]
+print(domain)
+# expected: example.com
+
+
+# Complete the function counter to return the number of words in a given string.
+# complete the following function...
+def counter(text):
+  words = text.split()
+  return len(words)
+ 
+print(counter('Python is a powerful programming language.'))
+# expected: 6
+print(counter('Learning new skills can be both challenging and rewarding.'))
+# expected: 9
+
+
+# Write a function called find_longest that returns the longest word from a given sentence.
+# create function find_longest here...
+def find_longest(str):
+	longest = ""
+	words = str.split()
+	for word in words:
+		if len(word) > len(longest):
+			longest = word
+	return longest
+ 
+print(find_longest('To be or not to be.'))
+# expected: 'not'
+print(find_longest('The best way to predict the future is to invent it.'))
+# expected: 'predict'
+
+
+
+#  f-strings
+
+# Sometimes, we need to create a string that includes information stored in variables. In this example, we use the + operator to achieve this.
+name = 'Jane'
+print('Hello, ' +  name +  '!')     # Hello, Jane!
+
+# This works, but it can be a bit verbose.
+# A more convenient and elegant way to embed variables into strings is using so called formatted string literals, or simply f-strings.
+# Here's the same example, but this time we use an f-string instead of the + operator:
+name = 'Jane'
+print(f'Hello, {name}!')        # Hello, Jane!
+
+# To create an f-string, simply add an f before the quotation mark of your string.
+# To embed the value of a variable into the string, use curly braces {}.
+# F-strings are are not only easier to read but also offer other useful features.
+# One of these is automatic type conversion.
+# Consider the following example.
+
+#age = 43
+#print('Jane is ' +  age +  ' years old.')      # TypeError: can only concatenate str (not "int") to str
+
+# The code throws an error because the variable age is not a string. The + operator can only concatenate strings.
+# In order to make this work, we need to convert age to a string before combining it with other strings.
+# To do this, we can use the str() function. It converts the integer 43 into the string '43':
+age = 43
+print('Jane is ' +  str(age) +  ' years old.')      # Jane is 43 years old.
+
+# Again, this approach can be a bit tedious. 
+# An f-string simplifies this by automatically converting the type of our variable:
+age = 43
+print(f'Jane is {age} years old.')      # Jane is 43 years old.
+
+# F-string are not limited to embedding variables. You can embed any Python expression.
+# Here, the f-string includes a mathematical expression:
+print(f'10 times 12 is {10 * 12}.')     # 10 times 12 is 120.
+
+# You can even call a function within an f-string:
+def add(a, b):
+  return a + b
+ 
+print(f'10 plus 12 is {add(10,12)}.')       # 10 plus 12 is 22.
+
+
+# extra examples:
+
+print('3 times 3 is {3 * 3}')       # 3 times 3 is {3 * 3}
+
+print(f'3 times 3 is {3 * 3}')      # 3 times 3 is 9
+
+
+
+
+# EXERCISES:
 
 # 
-#   # 
+# 
+# 
+# # 
 #
 
 #
