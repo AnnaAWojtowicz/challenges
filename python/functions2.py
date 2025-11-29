@@ -205,10 +205,144 @@ print(price)
 
 # EXERCISES:
 
+# Adjust the code below so that it correctly prints the value of the local variable num.
+def my_function():
+   num = 100
+   print(num)
+
+my_function()
+# expected output: 100
+
+
+# Adjust the increment function so that it modifies the global variable counter. Every time you call increment, it should increment counter by 1.
+counter = 0
+ 
+def increment():
+   global counter
+   counter += 1
+
+increment()
+print(counter) # expected: 1
+ 
+increment()
+print(counter) # expected: 2
 
 
 
+# Adjust the create_var function to create a global variable called my_var and assign a value to it.
+def create_var():
+   global my_var
+   my_var = "a"
+ 
+create_var()
+print(my_var)
 
+
+
+# Learn how to create and correctly call nested/inner functions.
+
+# We've already learnt that functions have their own scope, the local scope.
+
+#### global scope ####
+...
+ 
+def my_function():
+  #### local scope ####
+  ...
+
+
+
+#  You can use the local scope to create variables that are accessible only within the function.
+
+#### global scope ####
+...
+def my_function():
+  #### local scope ####
+  local_var = 10
+
+# This is not limited to just variables.
+# You can also create another function inside your function.
+# In this example, we create a function called inner that is nested inside a function called outer:
+def outer():
+  #### nested function ####
+  def inner():
+    print('hi')
+
+# When using nested functions, the same rules for global and local scope apply.
+# Since inner is defined inside the local scope of outer, it cannot be called from outside of outer. If we try to do so, we will encounter an error:
+def outer():
+  #### nested function ####
+  def inner():
+    print('hi')
+ 
+# inner()       # NameError: name 'inner' is not defined
+
+
+# To execute a nested function, you must call it from within the outer function. After that, you call the outer function to run everything:
+def outer():
+  #### nested function ####
+  def inner():
+    print('hi')
+  inner()
+ 
+outer()     # Hi
+
+
+# extra examples:
+
+def outer():
+  def inner():
+    print('Hello World')
+ 
+outer()     # (nothing is being printed since inner function is never called)
+
+
+
+def outer():
+  def inner():
+    print('Hello World')
+ 
+# inner()       # NameError: name 'inner' is not defined
+
+
+
+def outer():
+  def inner():
+    print('Hello World')
+  inner()
+ 
+outer()     # Hello World
+
+
+# Remember that you can use the global keyword to declare a variable as global within a local scope:
+def my_function():
+  global my_var
+  my_var = 10
+
+# This is only limited to variables and does not work for nested functions. Let's see what happens if we try:
+def outer():
+  global inner
+  def inner():
+    print('hi')
+ 
+# inner()         # NameError: name 'inner' is not defined
+
+
+# ERECISES:
+
+#
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
 # 
 # 
 # 
