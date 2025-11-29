@@ -553,22 +553,272 @@ outer()
 # EXERCISES: 
 
 # In this exercise, the function outer returns the result of inner. x within inner from the enclosing function and multiply it with the local variable y.
+def outer():
+  x = 3
+  def inner():
+    y = 2
+    result = x * y
+    return result 
+  return inner()
+ 
+print(outer()) # output: 6
 
-#  
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-#  #
+
+
+# In this exercise, the function outer returns the result of inner. Modify inner so that outer returns the expected result.
+def outer(x):
+  def inner():
+    y = 2
+    return x * y
+  
+  return inner()
+ 
+print(outer(99)) # output: 198
+print(outer(3)) # output: 6
+
+
+
+#  Print the value of all three versions of x.
+x = 10
+def outer():
+  x = 20
+  def inner():
+    x = 30
+    print(x)    # 30
+  inner()
+  print(x)      # 20
+print(x)        # 10
+outer()
+# but it gets printed in this order: 10 30 20
+
+
+
+# Introduction to Closures
+# Learn how to return functions from other functions and use this technique to create closures. Discover what closures are and how they can be used to create function factories and a kind of 'protected memory'.
+# Let's begin with a simple example of a function nested inside another function.
+def outer_function(message):
+  def inner_function():
+    print(message)
+  inner_function()
+ 
+outer_function('Hello')     # Hello
+
+# outer_function takes the message paramter and defines a nested function called inner_function, which it immediately executes.
+# The inner_function prints the value of message, which it can access through the enclosing scope of outer_function.
+# I know it seems a bit overly complicated to use all this code just to print a simple message.
+# Things get interesting when the outer_function doesn't just execute the inner_function, but instead returns it:
+def outer_function(message):
+  def inner_function():
+    print(message)
+  #### returning the nested function ####
+  return inner_function
+
+# Now we can assign the nested function to a new variable and execute it outside outer_function:
+def outer_function(message):
+  def inner_function():
+    print(message)
+  #### returning the nested function ####
+  return inner_function
+ 
+#### Storing the nested function in a new variable
+greet = outer_function('Hello')
+ 
+#### Calling the nested function ####
+greet()     # Hello
+
+
+# In this way, you could say that the nested function has "escaped" the outer_function.
+# The key takeaway is that it still retains access to the original value of message from its enclosing scope even though outer_function has finished executing.
+# This is what's called a closure.
+# A closure is created when a nested function "remembers" the variables from its enclosing scope even after the outer function has finished executing.
+# This means the inner function can still access and use those variables.
+# In our example, we can now create different versions of the inner_function by passing different values to the outer_function:
+def outer_function(message):
+  def inner_function():
+    print(message)
+  return inner_function
+ 
+#### create different versions of inner_function ####
+greet = outer_function('Hello')
+farewell = outer_function('Goodbye')
+ 
+greet()     # Hello
+farewell()  # Goodbye
+
+# Now, we've used the outer_function as a function factory.
+# A function factory is a function that produces other functions, allowing you to create specialized behavior based on input parameters.
+
+
+# extra examples: 
+
+def outer(x):
+  y = 5
+  def inner():
+    print(x * y)
+  return inner
+ 
+func = outer(100)
+func()      # 500
+
+
+
+def outer(x):
+  y = 5
+  def inner():
+    x = 10
+    print(x * y)
+  return inner
+ 
+func = outer(100)
+func()      # 50
+
+
+
+# Function factories are just one of many use cases for closures.
+# You can also use closures to manage a state that you want to keep hidden from the outside world.
+# For example, here we create a create_counter function that manages the state of a count variable:
+def create_counter():
+  count = 0 # Protected state
+ 
+  def increment():
+    nonlocal count # Access the enclosing function's variable
+    count += 1
+    print(count)
+  return increment
+ 
+my_counter = create_counter()
+ 
+my_counter()    # 1
+my_counter()    # 2
+my_counter()    # 3
+# 1 2 3
+
+# The nonlocal keyword allows the inner function to modify the count variable from the enclosing create_counter function.
+# The moment we execute the create_counter function, we create a new instance of the count variable.
+# This value is not directly accessible to us. It can only be modified by the nested function increment. 
+# However, this nested function is available to use because the outer function returned it, and we assigned it to the my_counter variable.
+# Be executing my_counter, we can indirectly modify the count.
+
+
+# extra examples:
+
+def create_counter():
+  count = 0
+  def increment():
+    nonlocal count
+    count += 1
+    print(count)
+  return increment
+ 
+func = create_counter()
+ 
+#print(count)   # NameError: name 'count' is not defined.
+
+
+def create_counter():
+  count = 0
+  def increment():
+    nonlocal count
+    count += 2
+    print(count)
+  return increment
+ 
+func = create_counter()
+func()  # 2
+func()  # 4
+func()  # 6
+
+
+# !!! SUPER IMPORTANT EXAMPLE!!!
+def create_counter():
+  count = 0
+  def increment():
+    nonlocal count
+    count += 1
+    print(count)
+  return increment
+ 
+func1 = create_counter()
+func2 = create_counter()
+func1()     # 1
+func2()     # 1
+func1()     # 2
+func2()     # 2
+
+
+
+def create_counter(step):
+  count = 0
+  def increment():
+    nonlocal count
+    count += step
+    print(count)
+  return increment
+ 
+func = create_counter(5)
+func()      # 5
+func()      # 10
+
+
+
+def create_counter(step):
+  count = 0
+  def increment():
+    nonlocal count
+    count += step
+    print(count)
+  return increment
+ 
+func1 = create_counter(5)
+func2 = create_counter(2)
+func1()     # 5
+func1()     # 10
+func2()     # 2
+func2()     # 4
+
+
+# !!! ANOTHER IMPORTANT ONE!!!
+def create_counter():
+  count = 0
+  def increment(step):
+    nonlocal count
+    count += step
+    print(count)
+  return increment
+ 
+func = create_counter()
+ 
+func(1)     # 1
+func(2)     # 3
+func(3)     # 6
+
+
+
+# The function secret_keeper holds a secret that is only revealed by its inner function reveal. In other words, we are creating a closure. However, there's a small error. Fix the mistake to turn the code into a fully working closure.
+def secret_keeper():
+  secret = '🤫🎁'
+  def reveal():
+    return secret 
+  return reveal
+  
+get_secret = secret_keeper() 
+print(get_secret()) # expected: 🤫🎁
+
+
+
+# We've created a counter using a closure. Adjust the code so that the print statement outputs True.
+def create_counter():
+  count = 0
+  def increment():
+    nonlocal count
+    count += 1
+    return count
+  return increment
+ 
+count = create_counter()
+ 
+count() # count == 1
+count() # count == 2
+ 
+print(count() == 3) # output: True
+
