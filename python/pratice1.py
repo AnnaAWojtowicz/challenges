@@ -265,5 +265,15 @@ def minutes_between(earlier, later):
     total = l_h_m - e_h_m
     print(total)
 
+"""
+# shorter version
+   e_hours = int(earlier[0:2]) * 60 + int(earlier[-2:])
+   l_hours = int(later[0:2]) * 60 + int(later[-2:])
+   minutes = l_hours - e_hours
+   return minutes
+"""
+
+
+
 print(minutes_between('10:15', '11:16')) # expected output: 61
 print(minutes_between('08:00', '19:47')) # expected output: 707
