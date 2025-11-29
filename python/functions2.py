@@ -68,12 +68,149 @@ my_function()
 
 
 
+# Back to our original example and to why the value of text does not change:
+text = 'Hello World'
+ 
+def my_function():
+  text = 'Python'
+ 
+my_function()
+print(text)     # Hello World
+
+# The reason is that we have actually created 2 versions of text: one in the global scope and another that exists only within the scope of my_function.
+# Here, you can see that the string Python is only assigned to the local version of text, while the global version remains unchanged before and after we call my_function:
+
+#### global scope ####
+text = 'Hello World'
+print(f"Global scope: '{text}'")    # Global scope: 'Hello World'
+ 
+def my_function():
+  #### local scope ####
+  text = 'Python'
+  print(f"Local scope: '{text}'")   # Local scope: 'Python'
+ 
+#### global scope ####
+my_function()
+print(f"Global scope: '{text}'")    # Global scope: 'Hello World'
+
+# To tell Python that you want to modify a global variable inside a function instead of creating a new one with the same name, you can use the global keyword.
+# You can use the global keyword to declare a variable as global within a local scope:
+
+def my_function():
+  #### local scope ####
+  # declare my_var as global
+  global my_var
+
+# This allows my_var to be accessed and modified globally.
+# So, to modify the global variable text from our example, we need to declare it as global inside my_function:
+
+#### global scope ####
+text = 'Hello World'
+print(f"Global scope: '{text}'")    # Global scope: 'Hello World'
+ 
+def my_function():
+  #### local scope ####
+  # declare text as global:
+  global text
+  text = 'Python'
+  print(f"Local scope: '{text}'")   # Local scope: 'Python'
+ 
+#### global scope ####
+my_function()
+print(f"Global scope: '{text}'")    # Global scope: 'Python'
+
+# Now, we have successfully modified text from within the scope of my_function.
+# Using the global keyword, you can not only modify global variables from within local scopes, but also create new ones.
+# For example, in the code below, we create a new global variable inside my_function and access it outside the function's scope:
+def my_function():
+  global num
+  num = 10
+ 
+my_function()
+print(num)      # 10
+
+# Be aware that the variable is only created when you call the function.
+# It will not work if you try to access num before calling my_function:
+def my_function():
+  global num
+  num = 10
+ 
+#print(num)     # NameError: name 'num' is not defined
+my_function()
+
+
+
+# extra examples:
+
+price = 10
+def func():
+  quantity = 2
+  print(price * quantity)   # 20
+
+func()
+
+
+
+price = 10
+def func():
+  quantity = 2
+ 
+func()
+# print(price * quantity)     # NameError: name 'quantity' is not defined
+
+
+price = 10
+def func():
+  price = 5
+  print(price)      # 5
+ 
+func()
+print(price)        # 10
+
+
+
+price = 10
+def func():
+  price = 5
+  print(price)      # 5
+ 
+print(price)        # 10
+func()
+
+# BUT! since this is before calling the function: print(price) # 10, this will be printed first
+
+
+
+price = 10
+def func():
+  price = 5
+ 
+print(price)
+func()
+print(price)
+# 10 10
+
+
+
+price = 10
+def func():
+  global price
+  price = 5
+ 
+print(price)
+func()
+print(price)
+# 10 5
+
+
+# EXERCISES:
+
+
+
+
+
 # 
 # 
 # 
 # 
-# 
-# 
-# 
-# 
-# #
+#  #
