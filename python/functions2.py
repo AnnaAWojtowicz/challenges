@@ -330,7 +330,231 @@ def outer():
 
 # ERECISES:
 
-#
+# The following code contains a mistake. Fix it so the nested function is called correctly, and the message Hello World is displayed.
+def outer_func():
+  def print_msg():
+    print('Hello World')
+  print_msg()
+outer_func()
+# expected output: 'Hello World'
+
+
+
+# The following code contains a mistake. Fix it so the nested function is called correctly, and the message Hello from inner_func is displayed.
+def outer_func():
+  def inner_func():
+    print('Hello from inner_func')
+  inner_func()
+outer_func()
+# expected output: 'Hello from inner_func'
+
+
+
+# In the code below, my_func repeatedly calls the function inner. However, that function hasn't been created yet. Define the inner function and make it print a message each time it's called.
+def my_func():
+  def inner():
+    print("Hi")
+  for _ in range(5):
+    inner()
+my_func()
+
+
+
+
+# In the code below, my_func repeatedly calls inner_func. Although the code runs without any issues, inner_func is currently defined as a global function. Adjust the code so that inner_func is nested inside my_func.
+def my_func():
+    def inner_func():
+        print('Hello World')
+    for _ in range(3):
+        inner_func()
+my_func()
+
+
+
+# Learn about the enclosing scope, which allows nested functions to access variables defined in their outer (enclosing) function.
+# We've already learnt that functions can access variables defined in their own local scope, as well as in the global scope.
+
+#### global scope ####
+...
+ 
+def my_function():
+  #### local scope ####
+  ...
+
+
+# When we are dealing with nested functions, there's an additional type of scope: the so-called enclosing scope.
+# The enclosing scope refers to the region where the outer function's variables are accessible by the inner (nested) function.
+# Even though the inner function has its own scope, it can still access variables from the outer function.
+# From the perspective of the inner function, there are 3 different scopes:
+
+#### global scope ####
+...
+ 
+def outer():
+  #### enclosing scope ####
+  ...
+  def inner():
+    #### local scope ####
+    ...
+#### global scope ####
+...
+ 
+
+# That means the inner function can access variables defined in the global scope...
+
+#### global scope ####
+global_var = 'global'
+ 
+def outer():
+  #### enclosing scope ####
+  def inner():
+    #### local scope ####
+    print(global_var)           # global
+  inner()
+ 
+outer()
+
+
+# And variables defined in the enclosing scope...
+
+#### global scope ####
+ 
+def outer():
+  #### enclosing scope ####
+  enclosing_var = 'enclosing'
+  def inner():
+    #### local scope ####
+    print(enclosing_var)        # enclosing
+  inner()
+ 
+outer()
+
+
+# And variables defined in its own local scope...
+
+#### global scope ####
+ 
+def outer():
+  #### enclosing scope ####
+  def inner():
+    local_var = 'local'
+    #### local scope ####
+    print(local_var)        # local
+  inner()
+ 
+outer()
+
+
+# In Python, the way variables are looked up follows a specific order, or hierarchy.
+# This hierarchy determines where Python starts looking for variable names.
+# The order goes from inside to outside:
+# Local Scope > Enclosing Scope > Global Scope
+# This order is important when multiple variables with the same name exist in different scopes.
+# For example, in this case, the local version of x takes precedence over the others:
+x = 'global'
+ 
+def outer():
+  x = 'enclosing'
+ 
+  def inner():
+    x = 'local'
+    print(x)
+ 
+  inner()
+ 
+outer()
+
+# local
+
+
+
+
+# If there's no local version of x, the enclosing version takes precedence over the global one:
+x = 'global'
+ 
+def outer():
+  x = 'enclosing'
+ 
+  def inner():
+    print(x)
+ 
+  inner()
+ 
+outer()
+
+# enclosing
+
+
+
+# extra examples:
+
+x = 10
+def outer():
+  y = 20
+  def inner():
+    z = 30
+    print(x, y, z)
+  inner()
+ 
+outer()
+# 10 20 30
+
+
+x = 10
+def outer():
+  x = 20
+  def inner():
+    x = 30
+    print(x)
+  inner()
+ 
+outer()
+# 30
+
+
+x = 10
+def outer():
+  x = 20
+  def inner():
+    x = 30
+  print(x)
+  inner()
+ 
+outer()
+# 20    <- because print is before the inner finction is being called
+
+
+
+x = 10
+def outer():
+  x = 20
+  def inner():
+    x = 30
+  inner()
+print(x)
+ 
+outer()
+# 10
+
+
+
+x = 10
+def outer():
+  x = 20
+  def inner():
+    print(x)
+  inner()
+ 
+outer()
+# 20
+
+
+
+# EXERCISES: 
+
+# In this exercise, the function outer returns the result of inner. x within inner from the enclosing function and multiply it with the local variable y.
+
+#  
 # 
 # 
 # 
